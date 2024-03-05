@@ -1,15 +1,10 @@
-import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native'
+import { Platform, SafeAreaView, StatusBar, StyleSheet, Text } from 'react-native'
 import { Slot } from 'expo-router';
-
-import '../global.css';
 
 
 export default function Layout() {
   return (
-    <SafeAreaView
-      style={styles.androidSafeArea}
-      className='w-full h-full'
-    >
+    <SafeAreaView style={styles.androidSafeArea} >
       <Slot />
     </SafeAreaView>
   );
