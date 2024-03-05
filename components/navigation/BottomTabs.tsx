@@ -1,14 +1,26 @@
 import { StyleSheet, Text, View } from "react-native"
 import { Tab } from "./Tab"
-import { LayoutPanelLeft, Plus, TrendingUpIcon } from "lucide-react-native"
+import { navigationTabItems } from "~/constants/navigation"
+import { usePathname } from "expo-router"
+
 
 
 export const BottomTabs = () => {
+
+    const pathname = usePathname();
+
     return (
         <View style={styles.tabsContainer}>
-            <Tab style={styles.tab} icon={LayoutPanelLeft} active />
-            <Tab style={styles.tab} icon={Plus} active={false} />
-            <Tab style={styles.tab} icon={TrendingUpIcon} active={false} />
+            {
+                navigationTabItems.map(({ href, icon }) => (
+                    <Tab
+                        key={href}
+                        href={href}
+                        icon={icon}
+                        active={pathname === href}
+                    />
+                ))
+            }
         </View>
     )
 }
@@ -23,8 +35,5 @@ const styles = StyleSheet.create({
         height: 60,
         borderTopEndRadius: 20,
         borderTopStartRadius: 20,
-    },
-    tab: {
-        color: '#000'
-    },
+    }
 })
