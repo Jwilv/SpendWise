@@ -11,7 +11,7 @@ interface TabProps {
 
 export const Tab = ({ style, icon: Icon, active }: TabProps) => {
     return (
-        <Link href="/home" style={style} >
+        <Link href="/spending" style={style} >
             <Icon
                 size={36}
                 color={active ? "#8db986" : "#efeae4"}
