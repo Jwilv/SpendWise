@@ -14,5 +14,6 @@ export default function Layout() {
 const style = StyleSheet.create({
     layout: {
         height: "100%",
+        backgroundColor: '#e8e8e8',
     }
 })
