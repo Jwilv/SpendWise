@@ -10,7 +10,7 @@ export const SummaryCard = () => {
             <Text style={styles.preDescription}>Mi cuenta</Text>
             <More />
             <View style={styles.description}>
-                <Text style={styles.title}>Total : </Text>
+                <Text style={styles.title}>$&nbsp;</Text>
                 <Text style={styles.title}>-14050</Text>
             </View>
         </View>
