@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { SummaryCard } from '~/components/cards/SummaryCard';
 import { ChartAtivity } from '~/components/charts/ChartAtivity';
 
 
@@ -6,6 +7,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <ChartAtivity />
+      <SummaryCard />
     </View>
   );
 }
