@@ -22,7 +22,7 @@ export const ActivitiesProvider = ({ children }: ActivitiesContextProps) => {
     const [activitiesState, activitiesDispatch] = useReducer(activitiesReducer, ACTIVITIES_INITIAL_STATE);
 
     const setActivities = async (activity: Activity) => {
-        await AsyncStorage.setItem('activities', JSON.stringify([...activitiesState, activity]));
+        await AsyncStorage.setItem('activities', JSON.stringify([activity, ...activitiesState]));
         activitiesDispatch({ type: 'set-activities', payload: activity })
     }
 
