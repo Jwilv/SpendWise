@@ -9,7 +9,7 @@ type ActionType =
 export const activitiesReducer = (state: Activities, action: ActionType) => {
     switch (action.type) {
         case 'set-activities':
-            return [...state, action.payload]
+            return [action.payload, ...state]
 
         case 'refresh-activities':
             return [...action.payload]
