@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import {
     Text,
     StyleSheet,
@@ -11,6 +11,7 @@ import uuid from 'react-native-uuid';
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ActivitiesContext } from "~/context";
 
 const formSchema = z.object({
     title: z.string().min(4, 'El titulo debe tener al menos 4 caracteres'),
@@ -20,7 +21,9 @@ const formSchema = z.object({
 
 const SpendingScreen = () => {
 
-    const { control, handleSubmit } = useForm({
+    const { setActivities } = useContext(ActivitiesContext);
+
+    const { control, handleSubmit, reset, formState } = useForm({
         defaultValues: {
             title: '',
             amount: 0,
@@ -28,19 +31,22 @@ const SpendingScreen = () => {
         resolver: zodResolver(formSchema),
     });
 
-    const onSubmit = (data: any) => {
+    const isLoading = formState.isSubmitting;
+
+
+    const onSubmit = async (data: { title: string, amount: number }) => {
 
         const { title, amount } = data
 
         const newActivity = {
             title,
-            amount,
+            value: amount,
             date: Date.now(),
-            id: uuid.v4(),
+            id: uuid.v4() as string,
         }
 
-        console.log(newActivity);
-        console.log('onSubmit');
+        await setActivities(newActivity);
+        reset();
     }
 
     return (
@@ -72,7 +78,7 @@ const SpendingScreen = () => {
                     name="amount"
                     control={control}
                     rules={{ required: true }}
-                    render={({ field: { onChange }, fieldState: { error } }) => (
+                    render={({ field: { onChange, value }, fieldState: { error } }) => (
                         <>
                             <TextInput
                                 placeholder="1100"
@@ -80,6 +86,7 @@ const SpendingScreen = () => {
                                     const newValue = Number(value);
                                     onChange(newValue);
                                 }}
+                                value={String(value)}
                                 keyboardType="numeric"
                                 style={styles.input}
                             />
@@ -94,6 +101,7 @@ const SpendingScreen = () => {
                     <Button
                         title="Guardar"
                         onPress={handleSubmit(onSubmit)}
+                        disabled={isLoading}
                     />
                 </View>
             </View>

@@ -1,13 +1,8 @@
-import { PlusSquare } from "lucide-react-native";
 import { StyleSheet, Text, View } from "react-native"
 import { IconCard } from "./components/IconCard";
+import { Activity } from "~/types";
 
-interface ActivityCardProps {
-    title: string;
-    value: number;
-}
-
-export const ActivityCard = ({ title, value }: ActivityCardProps) => {
+export const ActivityCard = ({ title, value }: Activity) => {
     return (
         <View style={styles.Card}>
             <IconCard isGain={value > 0} />
