@@ -4,14 +4,14 @@ import { VerticalMore } from "../more/VerticalMore"
 import { More } from "./components/More"
 
 
-export const SummaryCard = () => {
+export const SummaryCard = ({ value }: { value: number }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.preDescription}>Mi cuenta</Text>
             <More />
             <View style={styles.description}>
-                <Text style={styles.title}>Total : </Text>
-                <Text style={styles.title}>-14050</Text>
+                <Text style={styles.title}>$&nbsp;</Text>
+                <Text style={styles.title}>{value}</Text>
             </View>
         </View>
     )

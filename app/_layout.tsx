@@ -1,12 +1,16 @@
 import { Platform, SafeAreaView, StatusBar, StyleSheet, Text } from 'react-native'
 import { Slot } from 'expo-router';
+import { ActivitiesProvider } from '~/context';
+
 
 
 export default function Layout() {
   return (
-    <SafeAreaView style={styles.androidSafeArea} >
-      <Slot />
-    </SafeAreaView>
+    <ActivitiesProvider>
+      <SafeAreaView style={styles.androidSafeArea} >
+        <Slot />
+      </SafeAreaView>
+    </ActivitiesProvider>
   );
 }
 
