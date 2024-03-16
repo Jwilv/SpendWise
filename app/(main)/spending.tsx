@@ -12,6 +12,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ActivitiesContext } from "~/context";
+import { CheckSquare, Square } from "lucide-react-native";
 
 const formSchema = z.object({
     title: z.string().min(4, 'El titulo debe tener al menos 4 caracteres'),
@@ -33,6 +34,8 @@ const SpendingScreen = () => {
 
     const isLoading = formState.isSubmitting;
 
+    const [isSpent, setIsSpent] = useState(false);
+
 
     const onSubmit = async (data: { title: string, amount: number }) => {
 
@@ -45,7 +48,12 @@ const SpendingScreen = () => {
             id: uuid.v4() as string,
         }
 
+        if (isSpent) {
+            newActivity.value = -newActivity.value;
+        }
+
         await setActivities(newActivity);
+        setIsSpent(false);
         reset();
     }
 
@@ -95,6 +103,24 @@ const SpendingScreen = () => {
                         </>
                     )}
                 />
+
+                <View>
+                    <Text style={styles.label}>Es un gasto</Text>
+                    {
+                        isSpent ?
+                            <CheckSquare
+                                size={20}
+                                color="grey"
+                                onPress={() => setIsSpent(!isSpent)}
+                            />
+                            :
+                            <Square
+                                size={20}
+                                color="grey"
+                                onPress={() => setIsSpent(!isSpent)}
+                            />
+                    }
+                </View>
 
 
                 <View style={styles.buttonContainer}>
