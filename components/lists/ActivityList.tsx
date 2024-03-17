@@ -27,12 +27,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         margin: 4,
-        borderRadius: 3,
+        borderRadius: 20,
         width: '95%',
     },
     title: {
         fontSize: 18,
-        fontWeight: '400',
+        fontWeight: '500',
         margin: 8,
+        marginLeft: 12,
+        color: '#6b6b6b',
     },
 })

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SummaryCard } from '~/components/cards/SummaryCard';
-import { ChartAtivity } from '~/components/charts/ChartAtivity';
+import { CardProfitExpense, ChallengeCard, SummaryCard } from '~/components/cards';
 import { ActivityList } from '~/components/lists';
 import { ActivitiesContext } from '~/context';
 
@@ -19,8 +18,9 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <ChartAtivity />
       <SummaryCard value={summary} />
+      <CardProfitExpense />
+      <ChallengeCard />
       <ActivityList />
     </View>
   );

@@ -1,22 +1,33 @@
+import moment from "moment";
 import { StyleSheet, Text, View } from "react-native"
-import { IconCard } from "./components/IconCard";
 import { Activity } from "~/types";
+import 'moment/locale/es';
 
-export const ActivityCard = ({ title, value }: Activity) => {
+export const ActivityCard = ({ title, value, date }: Activity) => {
+
+    const parseDate = moment(date).locale('es-AR').format('DD/MM/YYYY');
+
     return (
         <View style={styles.Card}>
-            <IconCard isGain={value > 0} />
             <Text
                 numberOfLines={1}
                 style={styles.title}
             >
                 {title}
             </Text>
+
             <Text
-                style={[styles.value, value < 0 ? styles.loss : styles.gain]}
+                style={styles.value}
                 numberOfLines={1}
             >
-                {value}
+                {value.toLocaleString('es-ES')}
+            </Text>
+
+            <Text
+                numberOfLines={1}
+                style={styles.date}
+            >
+                {parseDate}
             </Text>
         </View>
     )
@@ -25,7 +36,6 @@ export const ActivityCard = ({ title, value }: Activity) => {
 const styles = StyleSheet.create({
     Card: {
         alignItems: 'center',
-        backgroundColor: '#eee',
         borderRadius: 3,
         display: 'flex',
         height: 50,
@@ -37,20 +47,18 @@ const styles = StyleSheet.create({
         width: '95%',
     },
     title: {
-        width: '60%',
+        width: '55%',
         fontSize: 16,
         fontWeight: '400',
+        marginLeft: 10,
     },
     value: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        flex: 1,
-        textAlign: 'center',
+        fontSize: 16,
+        marginLeft: 'auto',
     },
-    gain: {
-        color: '#8db986',
-    },
-    loss: {
-        color: '#f25f5c',
+    date: {
+        marginLeft: 'auto',
+        marginRight: 10,
+        color: '#6b6b6b',
     }
 })

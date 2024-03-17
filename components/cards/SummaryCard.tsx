@@ -1,40 +1,32 @@
-import { MoreVertical } from "lucide-react-native"
 import { StyleSheet, Text, View } from "react-native"
-import { VerticalMore } from "../more/VerticalMore"
-import { More } from "./components/More"
-
 
 export const SummaryCard = ({ value }: { value: number }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.preDescription}>Mi cuenta</Text>
-            <More />
-            <View style={styles.description}>
-                <Text style={styles.title}>$&nbsp;</Text>
-                <Text style={styles.title}>{value}</Text>
-            </View>
+            <Text style={styles.title}>Mi Total</Text>
+            <Text style={styles.value}>${value.toLocaleString('es-ES')}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
-        width: '95%',
-        margin: 10,
-        borderRadius: 3,
-        padding: 8,
-    },
-    description: {
-        alignItems: 'flex-start',
-        flexDirection: 'row',
-        marginLeft: 5,
-    },
-    preDescription: {
-        fontSize: 13,
-        color: 'grey',
+        backgroundColor: '#466aea',
+        width: '100%',
+        height: 250,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
+        color: '#fff',
+        marginBottom: 5,
+        fontWeight: "400",
+    },
+    value: {
+        fontSize: 40,
+        color: '#fff',
     }
 })
