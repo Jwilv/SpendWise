@@ -20,7 +20,7 @@ export const Tab = ({
         <Link href={href} style={{ color: '#000' }} >
             <Icon
                 size={36}
-                color={active ? "#8db986" : "#efeae4"}
+                color={active ? "#466aea" : "#efeae4"}
             />
         </Link>
     )
