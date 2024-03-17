@@ -4,7 +4,7 @@ export const SummaryCard = ({ value }: { value: number }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Mi Total</Text>
-            <Text style={styles.value}>${value}</Text>
+            <Text style={styles.value}>${value.toLocaleString('es-ES')}</Text>
         </View>
     )
 }
