@@ -104,7 +104,7 @@ const SpendingScreen = () => {
                     )}
                 />
 
-                <View>
+                <View style={styles.spentContainer}>
                     <Text style={styles.label}>Es un gasto</Text>
                     {
                         isSpent ?
@@ -140,9 +140,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         margin: 10,
+        marginTop: 30,
         alignSelf: 'center'
     },
     formCard: {
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 3,
         padding: 8,
-        height: 300,
+        height: 360,
     },
     label: {
         fontSize: 14,
@@ -166,10 +167,8 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         margin: 10,
-        borderWidth: 1,
         padding: 10,
-        borderRadius: 3,
-        borderColor: '#555',
+        borderRadius: 10,
         backgroundColor: '#eee',
         fontSize: 14,
         fontWeight: 'bold',
@@ -177,8 +176,15 @@ const styles = StyleSheet.create({
         width: '90%',
         alignSelf: 'center'
     },
+    spentContainer: {
+        marginTop: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     buttonContainer: {
-        margin: 10,
+        marginTop: 'auto',
+        marginBottom: 'auto',
         alignSelf: 'center',
         width: '90%',
         padding: 10,
